@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ListKotlin</string>
+    <string-array name="language">
+        <item>C</item>
+        <item>C++</item>
+        <item>Java</item>
+        <item>Kotlin</item>
+        <item>Python</item>
+        <item>C#</item>
+        <item>PHP</item>
+        <item>JavaScript</item>
+        <item>HTML</item>
+        <item>CSS</item>
+        <item>F#</item>
+        <item>R</item>
+        <item>Go</item>
+        <item>English</item>
+        <item>Hindi</item>
+    </string-array>
+</resources>
