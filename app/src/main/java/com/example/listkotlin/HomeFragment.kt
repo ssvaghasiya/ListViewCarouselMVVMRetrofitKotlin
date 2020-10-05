@@ -31,43 +31,43 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-//    var sampleImages = intArrayOf(
-//        R.drawable.image_1,
-//        R.drawable.image_2,
-//        R.drawable.image_3,
-//        R.drawable.image_4,
-//        R.drawable.image_5
-//    )
+    var sampleImages = intArrayOf(
+        R.drawable.image_1,
+        R.drawable.image_2,
+        R.drawable.image_3,
+        R.drawable.image_4,
+        R.drawable.image_5
+    )
 
-//    var sampleImagesFromApi = mutableListOf<String>()
-//    var carouselview: CarouselView? = null
+    var sampleImagesFromApi = mutableListOf<String>()
+    var carouselview: CarouselView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-//        val carouselviewmodel = ViewModelProvider(this).get(CarouselViewModel::class.java)
-//        carouselviewmodel.getResponseData()
-//        carouselviewmodel.responseLiveData.observe(this, Observer {
-//            var responsedata: MutableList<Data> = it.data as MutableList<Data>
-//            for ((i, data) in responsedata.withIndex()) {
-//                sampleImagesFromApi.add(responsedata[i].avatar)
-//            }
-//            Log.d("TAG1", sampleImagesFromApi.toString())
+        val carouselviewmodel = ViewModelProvider(this).get(CarouselViewModel::class.java)
+        carouselviewmodel.getResponseData()
+        carouselviewmodel.responseLiveData.observe(this, Observer {
+            var responsedata: MutableList<Data> = it.data as MutableList<Data>
+            for ((i, data) in responsedata.withIndex()) {
+                sampleImagesFromApi.add(responsedata[i].avatar)
+            }
+            Log.d("TAG1", sampleImagesFromApi.toString())
 //            carouselview?.setPageCount(sampleImagesFromApi.size)
-//        })
+        })
 //        carouselview?.setImageListener(imageListener)
     }
 
-//    var imageListener: ImageListener = object : ImageListener {
-//        override fun setImageForPosition(position: Int, imageView: ImageView?) {
-////            imageView?.setImageResource(sampleImages[position])
-//            Picasso.get().load(sampleImagesFromApi[position]).placeholder(R.drawable.placeholderimg).networkPolicy(
-//                NetworkPolicy.NO_CACHE).into(imageView)
-//        }
-//
-//    }
+    var imageListener: ImageListener = object : ImageListener {
+        override fun setImageForPosition(position: Int, imageView: ImageView?) {
+//            imageView?.setImageResource(sampleImages[position])
+            Picasso.get().load(sampleImagesFromApi[position]).placeholder(R.drawable.placeholderimg).networkPolicy(
+                NetworkPolicy.NO_CACHE).into(imageView)
+        }
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var root = inflater.inflate(R.layout.fragment_home, container, false)
-//        carouselview = root.findViewById(R.id.carouselViewHomefrag) as? CarouselView;
+        carouselview = root.findViewById(R.id.carouselViewHomefrag) as? CarouselView;
         return root
     }
 
