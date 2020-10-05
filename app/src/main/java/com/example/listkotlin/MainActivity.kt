@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         listView.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, position, id ->
             val item = adapterView.getItemAtPosition(position) as String
             val itemID = adapterView.getItemIdAtPosition(position)
-            var intent = Intent(this,HomePageActivity::class.java)
+            var intent = Intent(this,NavDrawerActivity::class.java)
             intent.putExtra("language",item)
             startActivity(intent)
             Toast.makeText(this,"${item+" "+itemID}",Toast.LENGTH_SHORT).show()
