@@ -6,9 +6,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fitsSystemWindows="true"-->
+<!--        android:theme="@style/AppTheme">-->
+
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar_home"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            android:background="?attr/colorPrimary"-->
+<!--            app:layout_scrollFlags="scroll|enterAlways"-->
+<!--            app:popupTheme="@style/AppTheme"/>-->
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_main"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fitsSystemWindows="true"
+        android:scaleType="centerCrop">
 
         <com.synnapps.carouselview.CarouselView
             android:id="@+id/carouselViewHomefrag"
@@ -21,7 +40,5 @@
             app:strokeColor="#FF777777"
             app:strokeWidth="1dp" />
     </RelativeLayout>
-
-
 
 </FrameLayout>

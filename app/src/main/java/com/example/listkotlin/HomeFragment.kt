@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.listkotlin.Model.Data
@@ -14,6 +15,7 @@ import com.example.listkotlin.ViewModel.CarouselViewModel
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import com.synnapps.carouselview.CarouselView
+import com.synnapps.carouselview.ImageClickListener
 import com.synnapps.carouselview.ImageListener
 
 // TODO: Rename parameter arguments, choose names that match
@@ -55,19 +57,15 @@ class HomeFragment : Fragment() {
                 sampleImagesFromApi.add(responsedata[i].avatar)
             }
             Log.d("TAG1", sampleImagesFromApi.toString())
-//            carouselview?.setPageCount(sampleImagesFromApi.size)
+           Log.d("arrsize",sampleImagesFromApi.size.toString())
+            carouselview?.setImageListener(imageListener)
+            carouselview?.setImageClickListener(imageClickListener)
+            carouselview?.setPageCount(sampleImagesFromApi.size)
         })
-//        carouselview?.setImageListener(imageListener)
-    }
-
-    var imageListener: ImageListener = object : ImageListener {
-        override fun setImageForPosition(position: Int, imageView: ImageView?) {
-//            imageView?.setImageResource(sampleImages[position])
-            Picasso.get().load(sampleImagesFromApi[position]).placeholder(R.drawable.placeholderimg).networkPolicy(
-                NetworkPolicy.NO_CACHE).into(imageView)
-        }
 
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -97,5 +95,18 @@ class HomeFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    var imageListener: ImageListener = object : ImageListener {
+        override fun setImageForPosition(position: Int, imageView: ImageView?) {
+//            imageView?.setImageResource(sampleImages[position])
+            Picasso.get().load(sampleImagesFromApi[position]).placeholder(R.drawable.placeholderimg).into(imageView)
+        }
+    }
+
+    var imageClickListener: ImageClickListener = object : ImageClickListener {
+        override fun onClick(position: Int) {
+            Toast.makeText(activity,"Carousel $position", Toast.LENGTH_SHORT).show()
+        }
     }
 }

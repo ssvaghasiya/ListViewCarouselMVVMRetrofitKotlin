@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.listkotlin.Model.Data
@@ -13,6 +14,7 @@ import com.example.listkotlin.ViewModel.CarouselViewModel
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import com.synnapps.carouselview.CarouselView
+import com.synnapps.carouselview.ImageClickListener
 import com.synnapps.carouselview.ImageListener
 
 class HomePageActivity : AppCompatActivity() {
@@ -43,6 +45,7 @@ class HomePageActivity : AppCompatActivity() {
             carouselview.setPageCount(sampleImagesFromApi.size)
         })
         carouselview.setImageListener(imageListener)
+        carouselview.setImageClickListener(imageClickListener)
     }
 
     var imageListener: ImageListener = object : ImageListener {
@@ -50,6 +53,11 @@ class HomePageActivity : AppCompatActivity() {
 //            imageView?.setImageResource(sampleImages[position])
             Picasso.get().load(sampleImagesFromApi[position]).placeholder(R.drawable.placeholderimg).networkPolicy(NetworkPolicy.NO_CACHE).into(imageView)
         }
+    }
 
+    var imageClickListener: ImageClickListener = object : ImageClickListener {
+        override fun onClick(position: Int) {
+            Toast.makeText(this@HomePageActivity,"Carousel $position",Toast.LENGTH_SHORT).show()
+        }
     }
 }

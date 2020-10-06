@@ -23,9 +23,8 @@ class NavDrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         navigationView.setNavigationItemSelectedListener(this)
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         setSupportActionBar(toolbar)
-
+        supportActionBar?.title = "Home"
         drawer = findViewById(R.id.drawer_layout)
-
         toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -53,13 +52,13 @@ class NavDrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         when(item.itemId) {
             R.id.nav_item_one ->
             {
-//                var intent = Intent(this,Item1::class.java)
-//                startActivity(intent)
                 loadFragment(HomeFragment())
+                supportActionBar?.title = "Home"
                 Toast.makeText(this,"Item 1 Selected", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_item_two -> {
-//                loadFragment(Item3Fragment())
+                loadFragment(ExampleFragment())
+                supportActionBar?.title = "Example Fragment"
                 Toast.makeText(this,"Item 2 Selected", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_item_three -> Toast.makeText(this,"Item 3 Selected", Toast.LENGTH_SHORT).show()
