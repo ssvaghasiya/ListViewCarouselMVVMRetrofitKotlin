@@ -10,13 +10,16 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.listkotlin.Model.Data
 import com.example.listkotlin.ViewModel.CarouselViewModel
-import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageClickListener
 import com.synnapps.carouselview.ImageListener
+import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,14 +46,31 @@ class HomeFragment : Fragment() {
 
     var sampleImagesFromApi = mutableListOf<String>()
     var carouselview: CarouselView? = null
+    var recycler_view: RecyclerView? = null
+    var dataList: MutableList<DataGridHome> = mutableListOf()
+    lateinit var myadapter : GridDataAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        dataList.add(DataGridHome(R.drawable.gallary,"Gallary"))
+        dataList.add(DataGridHome(R.drawable.users,"Users"))
+        dataList.add(DataGridHome(R.drawable.ads1,"Advertise"))
+        dataList.add(DataGridHome(R.drawable.contact1,"Contact"))
+        myadapter = GridDataAdapter(dataList)
+
         val carouselviewmodel = ViewModelProvider(this).get(CarouselViewModel::class.java)
         carouselviewmodel.getResponseData()
+
+        recycler_view?.layoutManager = GridLayoutManager(activity,2,LinearLayoutManager.VERTICAL,false)
+        recycler_view?.adapter = myadapter
+        recycler_view?.setHasFixedSize(true)
+        recycler_view?.isFocusable = false
+        recycler_view?.isNestedScrollingEnabled = false
+        recycler_view?.addItemDecoration(SpacesItemDecoration())
         carouselviewmodel.responseLiveData.observe(this, Observer {
             var responsedata: MutableList<Data> = it.data as MutableList<Data>
             for ((i, data) in responsedata.withIndex()) {
@@ -61,6 +81,8 @@ class HomeFragment : Fragment() {
             carouselview?.setImageListener(imageListener)
             carouselview?.setImageClickListener(imageClickListener)
             carouselview?.setPageCount(sampleImagesFromApi.size)
+
+
         })
 
     }
@@ -73,7 +95,8 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var root = inflater.inflate(R.layout.fragment_home, container, false)
-        carouselview = root.findViewById(R.id.carouselViewHomefrag) as? CarouselView;
+        carouselview = root.findViewById(R.id.carouselViewHomefrag) as? CarouselView
+        recycler_view = root.findViewById(R.id.recycler_view_home) as? RecyclerView
         return root
     }
 
