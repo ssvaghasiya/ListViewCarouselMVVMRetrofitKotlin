@@ -65,12 +65,8 @@ class HomeFragment : Fragment() {
         val carouselviewmodel = ViewModelProvider(this).get(CarouselViewModel::class.java)
         carouselviewmodel.getResponseData()
 
-        recycler_view?.layoutManager = GridLayoutManager(activity,2,LinearLayoutManager.VERTICAL,false)
-        recycler_view?.adapter = myadapter
-        recycler_view?.setHasFixedSize(true)
-        recycler_view?.isFocusable = false
-        recycler_view?.isNestedScrollingEnabled = false
-        recycler_view?.addItemDecoration(SpacesItemDecoration())
+
+
         carouselviewmodel.responseLiveData.observe(this, Observer {
             var responsedata: MutableList<Data> = it.data as MutableList<Data>
             for ((i, data) in responsedata.withIndex()) {
@@ -81,8 +77,6 @@ class HomeFragment : Fragment() {
             carouselview?.setImageListener(imageListener)
             carouselview?.setImageClickListener(imageClickListener)
             carouselview?.setPageCount(sampleImagesFromApi.size)
-
-
         })
 
     }
@@ -97,6 +91,12 @@ class HomeFragment : Fragment() {
         var root = inflater.inflate(R.layout.fragment_home, container, false)
         carouselview = root.findViewById(R.id.carouselViewHomefrag) as? CarouselView
         recycler_view = root.findViewById(R.id.recycler_view_home) as? RecyclerView
+        recycler_view?.layoutManager = GridLayoutManager(activity,2)
+        recycler_view?.adapter = myadapter
+        recycler_view?.setHasFixedSize(true)
+        recycler_view?.isFocusable = false
+        recycler_view?.isNestedScrollingEnabled = false
+        recycler_view?.addItemDecoration(SpacesItemDecoration())
         return root
     }
 
