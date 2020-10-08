@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.listkotlin.Model.ReqResUser
 import com.example.listkotlin.data.network.MyApi
+import com.example.listkotlin.data.network.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,7 +14,7 @@ class UserRepository {
     fun getApiData() : MutableLiveData<ReqResUser>{
         val dataResponse = MutableLiveData<ReqResUser>()
 
-        MyApi().getData()
+        RetrofitInstance.api.getData()
             .enqueue(object : Callback<ReqResUser>{
                 override fun onResponse(call: Call<ReqResUser>, response: Response<ReqResUser>) {
                     if(response.isSuccessful){

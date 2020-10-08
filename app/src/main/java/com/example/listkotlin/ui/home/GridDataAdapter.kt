@@ -1,6 +1,7 @@
-package com.example.listkotlin
+package com.example.listkotlin.ui.home
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.listkotlin.Model.DataGridHome
+import com.example.listkotlin.R
+import com.example.listkotlin.ui.family.FamilyActivity
 import kotlinx.android.synthetic.main.item_grid_home.view.*
 
 
@@ -30,10 +34,8 @@ class GridDataAdapter(private val exapmleList: MutableList<DataGridHome>): Recyc
         holder.textView1.text = currentItem.text1
 
         holder.itemView.setOnClickListener {
-//            var intent = Intent(context, SampleActivity::class.java)
-//            intent.putExtra("user",currentItem.firstName)
-//            context.startActivity(intent)
-            Toast.makeText(context,"Item $position", Toast.LENGTH_SHORT).show()
+            var intent = Intent(context, FamilyActivity::class.java)
+            context.startActivity(intent)
         }
     }
 

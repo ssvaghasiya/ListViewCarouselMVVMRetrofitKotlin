@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -23,13 +23,15 @@
 <!--                android:padding="5dp"-->
 <!--                android:src="@drawable/image_5" />-->
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:layout_below="@+id/toolbar_main"
                 android:layout_marginTop="?attr/actionBarSize"
                 android:fitsSystemWindows="true"
-                android:scaleType="centerCrop">
+                android:scaleType="centerCrop"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
 
                 <com.synnapps.carouselview.CarouselView
                     android:id="@+id/carouselViewHomefrag"
@@ -43,7 +45,7 @@
                     app:strokeWidth="1dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"/>
-            </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

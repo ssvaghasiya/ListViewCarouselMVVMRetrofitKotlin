@@ -1,4 +1,4 @@
-package com.example.listkotlin
+package com.example.listkotlin.ui.home
 
 import android.os.Bundle
 import android.util.Log
@@ -11,15 +11,15 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.listkotlin.Model.DataGridHome
 import com.example.listkotlin.Model.Data
+import com.example.listkotlin.R
 import com.example.listkotlin.ViewModel.CarouselViewModel
 import com.squareup.picasso.Picasso
 import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageClickListener
 import com.synnapps.carouselview.ImageListener
-import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,9 +64,6 @@ class HomeFragment : Fragment() {
 
         val carouselviewmodel = ViewModelProvider(this).get(CarouselViewModel::class.java)
         carouselviewmodel.getResponseData()
-
-
-
         carouselviewmodel.responseLiveData.observe(this, Observer {
             var responsedata: MutableList<Data> = it.data as MutableList<Data>
             for ((i, data) in responsedata.withIndex()) {
@@ -123,9 +120,11 @@ class HomeFragment : Fragment() {
     var imageListener: ImageListener = object : ImageListener {
         override fun setImageForPosition(position: Int, imageView: ImageView?) {
 //            imageView?.setImageResource(sampleImages[position])
-            Picasso.get().load(sampleImagesFromApi[position]).placeholder(R.drawable.placeholderimg).into(imageView)
+            Picasso.get().load(sampleImagesFromApi[position]).placeholder(R.drawable.placeholderimg)
+                .into(imageView)
         }
     }
+
 
     var imageClickListener: ImageClickListener = object : ImageClickListener {
         override fun onClick(position: Int) {

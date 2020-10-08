@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".NavDrawerActivity">
+    tools:context=".ui.navdrawer.NavDrawerActivity">
 
 
 
@@ -13,6 +13,10 @@
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+<!--        <include-->
+<!--            layout="@layout/top_bar"-->
+<!--            android:id="@+id/toolbar_main"/>-->
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"

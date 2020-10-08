@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.listkotlin.Model.Data
 import com.example.listkotlin.ViewModel.CarouselViewModel
 import com.squareup.picasso.NetworkPolicy

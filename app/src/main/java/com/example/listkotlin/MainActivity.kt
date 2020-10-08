@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.example.listkotlin.ui.navdrawer.NavDrawerActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         listView.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, position, id ->
             val item = adapterView.getItemAtPosition(position) as String
             val itemID = adapterView.getItemIdAtPosition(position)
-            var intent = Intent(this,NavDrawerActivity::class.java)
+            var intent = Intent(this, NavDrawerActivity::class.java)
             intent.putExtra("language",item)
             startActivity(intent)
             Toast.makeText(this,"${item+" "+itemID}",Toast.LENGTH_SHORT).show()

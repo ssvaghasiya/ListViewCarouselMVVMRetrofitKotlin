@@ -1,4 +1,4 @@
-package com.example.listkotlin
+package com.example.listkotlin.ui.navdrawer
 
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.example.listkotlin.ExampleFragment
+import com.example.listkotlin.R
+import com.example.listkotlin.ui.home.HomeFragment
 import com.google.android.material.navigation.NavigationView
 
 class NavDrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -25,7 +28,10 @@ class NavDrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Home"
         drawer = findViewById(R.id.drawer_layout)
-        toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        toggle = ActionBarDrawerToggle(this, drawer, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
         drawer.addDrawerListener(toggle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)

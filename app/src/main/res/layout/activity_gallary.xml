@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.gallary.GallaryActivity">
+
+    <include
+        layout="@layout/top_bar"
+        android:id="@+id/toolbar_gallary"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_gallary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_gallary"
+        android:clipToPadding="false"
+        android:padding="4dp"
+        tools:listitem="@layout/gallary_item" />
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.listkotlin
+package com.example.listkotlin.ui.home
 
 import android.graphics.Rect
 import android.view.View
