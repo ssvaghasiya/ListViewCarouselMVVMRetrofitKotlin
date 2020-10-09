@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.gallary.GallaryActivity"></activity>
+        <activity android:name=".ui.impcontact.ImpContactsActivity"></activity>
+        <activity android:name=".ui.ads.AdsActivity" />
+        <activity android:name=".ui.gallary.GallaryActivity" />
         <activity android:name=".ui.family.FamilyActivity" />
         <activity android:name=".ui.navdrawer.NavDrawerActivity" />
         <activity android:name=".HomePageActivity" />

@@ -27,9 +27,7 @@ class SurnameAdapter(private val exapmleList: MutableList<TempDataModel>): Recyc
         var currentItem = exapmleList[position]
 
         holder.textView1.text = currentItem.text
-        if(position%2 == 0){
-//            holder.cardView.background =
-        }
+
         holder.itemView.setOnClickListener {
 //            var intent = Intent(context, SampleActivity::class.java)
 //            intent.putExtra("user",currentItem.firstName)

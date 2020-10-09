@@ -1,4 +1,4 @@
-package com.example.listkotlin.ui.gallary
+package com.example.listkotlin.ui.impcontact
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,28 +7,29 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.listkotlin.Model.TempDataModel
 import com.example.listkotlin.R
-import com.example.listkotlin.ui.family.SurnameAdapter
-import kotlinx.android.synthetic.main.activity_family.*
-import kotlinx.android.synthetic.main.activity_gallary.*
+import com.example.listkotlin.ui.ads.AdsAdapter
+import com.example.listkotlin.ui.gallary.GallaryAdapter
+import kotlinx.android.synthetic.main.activity_ads.*
+import kotlinx.android.synthetic.main.activity_imp_contacts.*
 
-class GallaryActivity : AppCompatActivity() {
+class ImpContactsActivity : AppCompatActivity() {
     var dataList: MutableList<TempDataModel> = mutableListOf()
-    lateinit var myadapter : GallaryAdapter
+    lateinit var myadapter : ImpContactAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_gallary)
-        val toolbar = findViewById<View>(R.id.toolbar_gallary) as Toolbar
+        setContentView(R.layout.activity_imp_contacts)
+        val toolbar = findViewById<View>(R.id.toolbar_impcon) as Toolbar
         setSupportActionBar(toolbar)
         val actionBar = supportActionBar
-        actionBar?.title = "gallary"
+        actionBar?.title = "Imp Contacts"
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setDisplayShowHomeEnabled(true)
-        val example = generateDummyList(5)
-        myadapter = GallaryAdapter(example)
+        val example = generateDummyList(10)
+        myadapter = ImpContactAdapter(example)
 
-        recycler_view_gallary.layoutManager = LinearLayoutManager(this)
-        recycler_view_gallary.adapter = myadapter
-        recycler_view_gallary.setHasFixedSize(true)
+        recycler_view_impcon.layoutManager = LinearLayoutManager(this)
+        recycler_view_impcon.adapter = myadapter
+        recycler_view_impcon.setHasFixedSize(true)
     }
 
     private fun generateDummyList(size: Int): MutableList<TempDataModel>{

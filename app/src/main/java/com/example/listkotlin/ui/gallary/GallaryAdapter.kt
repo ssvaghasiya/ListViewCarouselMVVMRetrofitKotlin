@@ -18,7 +18,7 @@ class GallaryAdapter(private val exapmleList: MutableList<TempDataModel>): Recyc
     lateinit var  context: Context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GallaryViewHolder {
         context = parent.context
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.surname_item,parent,false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.gallary_item,parent,false)
         return GallaryViewHolder(itemView)
     }
 
